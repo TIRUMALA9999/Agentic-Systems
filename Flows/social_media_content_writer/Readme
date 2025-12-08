@@ -1,0 +1,7 @@
+Added Firecrawl and Open ai API keys
+
+Sample files
+To ensure that the AI-generated content follows a consistent writing style, the assets folder contains two sample files:
+
+example_threads.txt → Contains examples of well-structured Twitter (X) threads.
+example_linkedin.txt → Contains samples of LinkedIn posts with proper formatting, tone, and structure.
