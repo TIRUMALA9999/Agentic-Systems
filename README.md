@@ -4,21 +4,20 @@
 ![CrewAI](https://img.shields.io/badge/CrewAI-Agents%20%26%20Flows-black)
 ![Notebook](https://img.shields.io/badge/Jupyter-Notebooks-orange)
 
-**Target audience:** Recruiters / Hiring Managers  
-**Style:** Resume-focused • Interview-explainable • ATS-friendly
+
 
 This portfolio repository demonstrates practical **agentic system design** using **CrewAI** and **CrewAI Flows**: multi-agent orchestration, tool use (web search), memory behavior, and grounding via a custom knowledge source.
 
 ---
 
-## Key highlights (what to tell a recruiter in 30 seconds)
+## Key highlights 
 
 - Built a **3-agent research pipeline** (Research → Summarize → Fact-check) using **CrewAI** to improve reliability and reduce hallucinations.
 - Implemented **Flow-based orchestration** using `Flow` with `@start`/`@listen` patterns (event-driven, stateful workflows).
 - Explored **agent memory** (short-term, long-term, entity memory) to understand persistence and recall in multi-step tasks.
 - Added a **custom knowledge source** (weather API) to ground agent outputs with real external data.
 
-**ATS keywords:** Agentic AI, LLM agents, multi-agent systems, workflow orchestration, tool calling, grounding, memory, CrewAI, OpenAI API, Ollama, YAML configuration, Python.
+**Keywords:** Agentic AI, LLM agents, multi-agent systems, workflow orchestration, tool calling, grounding, memory, CrewAI, OpenAI API, Ollama, YAML configuration, Python.
 
 ---
 
@@ -54,7 +53,7 @@ Agentic-Systems-main/
 
 ---
 
-## How it works (interview explanation)
+## How it works
 
 ### 1) Research Crew (multi-agent pipeline)
 **Goal:** Produce a verified research summary for a topic.
@@ -111,7 +110,7 @@ cp .env.example .env
 
 ---
 
-## Run the most recruiter-relevant demo
+## Run the demo
 
 ### A) ResearchCrew (config-driven, end-to-end)
 1. Open `project/research_crew.ipynb`
@@ -140,7 +139,7 @@ python -m test_flow.main
 
 ---
 
-## Interview talking points (copy/paste)
+## Points
 
 - “I split the pipeline into research, summarization, and fact-checking to reduce hallucinations and make responsibilities clear.”
 - “I used tool-augmented agents (web search) so the system can fetch up-to-date sources rather than relying on static training knowledge.”
@@ -148,14 +147,6 @@ python -m test_flow.main
 - “I explored memory objects to understand how state and recall can improve continuity across steps.”
 - “I grounded responses with a custom knowledge source so outputs can be tied to external data.”
 
----
-
-## Roadmap (production polish)
-
-- Add pinned versions + lockfile (or `pyproject.toml` at root)
-- Add a single CLI entrypoint: `python -m project.run --topic "..." `
-- Add tests for knowledge source and task wiring
-- Add CI (lint + notebook smoke test)
 
 ---
 
