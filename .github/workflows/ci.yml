@@ -1,0 +1,66 @@
+name: CI
+
+#on:
+  #push:
+    #branches: ["main", "master"]
+  #pull_request:
+    #branches: ["main", "master"]
+
+jobs:
+  build-and-smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Primary deps
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # Dev tools
+          pip install ruff nbformat
+
+      - name: Ruff (lint)
+        run: |
+          ruff check .
+
+      - name: Python import/compile smoke test
+        run: |
+          python -m compileall -q .
+
+      - name: Notebook JSON validation (skip empty placeholders)
+        run: |
+          python - << 'PY'
+          import os, sys
+          import nbformat
+
+          bad = []
+          for root, _, files in os.walk("."):
+            for fn in files:
+              if fn.endswith(".ipynb"):
+                path = os.path.join(root, fn)
+                # Skip known empty placeholder notebooks (e.g., Flows/practice.ipynb in this repo snapshot)
+                try:
+                  if os.path.getsize(path) == 0:
+                    continue
+                except OSError:
+                  continue
+                try:
+                  nbformat.read(path, as_version=4)
+                except Exception as e:
+                  bad.append((path, str(e)))
+
+          if bad:
+            print("Invalid notebooks found:")
+            for p, e in bad:
+              print(f"- {p}: {e}")
+            sys.exit(1)
+          print("Notebook validation passed.")
+          PY
