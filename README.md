@@ -4,7 +4,7 @@
 ![CrewAI](https://img.shields.io/badge/CrewAI-Agents%20%26%20Flows-black)
 ![Notebook](https://img.shields.io/badge/Jupyter-Notebooks-orange)
 
-
+ 
 
 This portfolio repository demonstrates practical **agentic system design** using **CrewAI** and **CrewAI Flows**: multi-agent orchestration, tool use (web search), memory behavior, and grounding via a custom knowledge source.
 
